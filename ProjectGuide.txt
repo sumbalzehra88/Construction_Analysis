@@ -1,0 +1,90 @@
+====================================================================
+  PROJECT FILE GUIDE — Construction Incident Fatality Prediction
+====================================================================
+
+NOTEBOOKS
+---------
+CS-23024.ipynb
+    Main project notebook. Contains all five algorithm implementations
+    (Logistic Regression, KNN, SVM, Naive Bayes, ANN), incremental
+    learning pipelines, evaluation metrics, graphs, and test cases.
+    Run this to reproduce all results.
+
+Data_Preprocessing.ipynb
+    Data cleaning, feature engineering, standardisation, and SMOTE
+    balancing. Run this first before the main notebook if starting
+    from the raw data.
+
+--------------------------------------------------------------------
+
+RAW / PREPROCESSED DATA
+------------------------
+construction_weather_data_final.csv
+    Original merged dataset combining construction incident records
+    with weather data. Starting point for all preprocessing.
+
+Preprocessed_Construction_Inciden....csv
+    Output of the preprocessing pipeline. Cleaned and feature-
+    engineered data before standardisation or balancing.
+
+--------------------------------------------------------------------
+
+TRAIN / TEST SPLITS
+-------------------
+Standardized_Train.csv
+    Standardised (z-score) training set — 80% split. Used as input
+    to the SMOTE balancing step.
+
+Standardized_Test.csv
+    Standardised test set — held-out 20% split. Never used during
+    training. Used for all final model evaluations.
+
+Standardized_Train_70.csv
+    Alternative 70% training split (standardised). Created for
+    sensitivity experiments.
+
+Standardized_Test_30.csv
+    Corresponding 30% test split. Paired with Standardized_Train_70.
+
+--------------------------------------------------------------------
+
+BALANCED TRAINING SETS
+-----------------------
+Balanced_Training_Set_Only.csv
+    SMOTE-balanced version of Standardized_Train.csv (80/20 split).
+    This is the primary training file used by all five algorithms.
+
+Balanced_Training_Set_Only_70.csv
+    SMOTE-balanced version of the 70% training split. Used for
+    alternative split experiments.
+
+--------------------------------------------------------------------
+
+FINAL TEST SETS (unbalanced, real distribution)
+------------------------------------------------
+Test_Set_Only.csv
+    Final held-out test set matched to Balanced_Training_Set_Only.
+    Contains real class distribution .
+    Primary file for all classification reports and metric tables.
+
+Test_Set_Only_30.csv
+    Final held-out test set for the 70/30 split experiments.
+
+--------------------------------------------------------------------
+
+BATCH FILES
+-----------
+batch_32_rows_1.csv to batch_32_rows_5.csv
+    Small 32-row batches dummy data Used to
+    demonstrate and test the incremental learning capability
+    of the custom final algorithm implementation.
+
+--------------------------------------------------------------------
+
+SAVED MODEL
+-----------
+svm_model2.pkl
+    Serialised (pickle) file of the best SVM model (M2). Saved so
+    the model can be loaded and used for prediction without
+    retraining.
+
